@@ -1,7 +1,7 @@
 FROM python:3.9.7
 LABEL maintainer="Christos Mavrogiannis"
 
-COPY . /techtrends
+COPY techtrends/ /app
 
 WORKDIR /app
 RUN python -m pip install --upgrade pip
