@@ -1,8 +1,7 @@
-
-
 docker tag techtrends 84black84/techtrends:v1.0.0
 docker images
 docker push 84black84/techtrends:v1.0.0
+docker inspect --format='{{.LogPath}}' $INSTANCE_ID  54a5a542a51e
 
 ## Docker commands used to build the application 
 # insert the docker build command
@@ -14,8 +13,42 @@ docker run -d -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
 # insert the docker logs command
-docker logs 54a5a542a51e
+docker logs 96f39f3ecd3b
 
 ## Logs from the container running the TechTrends application
 # paste logs from the Docker container 
-docker inspect --format='{{.LogPath}}' $INSTANCE_ID  54a5a542a51e
+* Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3111
+ * Running on http://172.17.0.2:3111
+Press CTRL+C to quit
+172.17.0.1 - - [08/Oct/2022 15:34:42] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:42] "GET /static/css/main.css HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:42] "GET /favicon.ico HTTP/1.1" 404 -
+Article 2020 CNCF Annual Report
+172.17.0.1 - - [08/Oct/2022 15:34:44] "GET /1 HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:44] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [08/Oct/2022 15:34:50] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:50] "GET /static/css/main.css HTTP/1.1" 304 -
+Article Kubernetes v1.20 Release Notes
+172.17.0.1 - - [08/Oct/2022 15:34:53] "GET /3 HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:53] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [08/Oct/2022 15:34:56] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:56] "GET /static/css/main.css HTTP/1.1" 304 -
+Article CNCF Cloud Native Interactive Landscape
+172.17.0.1 - - [08/Oct/2022 15:34:57] "GET /4 HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:34:57] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [08/Oct/2022 15:35:00] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:35:00] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [08/Oct/2022 15:39:06] "GET /create HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:39:06] "GET /static/css/main.css HTTP/1.1" 304 -
+A new article is created with title My new post
+172.17.0.1 - - [08/Oct/2022 15:39:36] "POST /create HTTP/1.1" 302 -
+172.17.0.1 - - [08/Oct/2022 15:39:36] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:39:36] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [08/Oct/2022 15:48:30] "GET /healthz HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:48:36] "GET /metrics HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:48:47] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [08/Oct/2022 15:48:47] "GET /static/css/main.css HTTP/1.1" 304 -
