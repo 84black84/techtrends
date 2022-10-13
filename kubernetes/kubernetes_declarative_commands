@@ -1,0 +1,29 @@
+# to see the namespace resource creation base configuration content
+kubectl create ns sandbox --dry-run=client -o yaml
+# to create the namespace resource creation configuration
+kubectl create ns sandbox --dry-run=client -o yaml > namespace.yaml
+# To create the namespace
+kubectl apply -f namespace.yaml
+# List all the existing namespaces, the newly created namespace resource should be included in the list
+kubectl get ns
+
+kubectl create deploy techtrends --image=84black84/techtrends:latest -r=1 --port=3111 -n sandbox --dry-run=client -o yaml
+# create a base template for creating the deployment resource
+kubectl create deploy techtrends --image=84black84/techtrends:latest -r=1 --port=3111 -n sandbox --dry-run=client -o yaml > deploy.yaml
+# vim deploy.yaml
+# edit the file and add the livenessProbe, readinessProbe and the resources sections
+kubectl apply -f deploy.yaml
+# to verify that the deployment resource has been created
+kubectl get deploy -n sandbox
+# to see the pods
+kubectl get po -n sandbox
+
+# similarly to crate a serice resource
+kubectl expose deploy techtrends --type=ClusterIP --port=4111 --target-port=3111 -n sandbox --dry-run=client -o yaml
+kubectl expose deploy techtrends --type=ClusterIP --port=4111 --target-port=3111 -n sandbox --dry-run=client -o yaml > service.yaml
+kubectl apply -f service.yaml
+kubectl get svc -n sandbox
+
+kubectl get all -n sandbox
+# to delete a deploy resource
+kubectl delete deploy techtrends -n sandbox
