@@ -24,7 +24,6 @@ spec:
         name: techtrends
         ports:
         - containerPort: {{ .Values.containerPort }}
-        protocol: TCP
         livenessProbe:
            httpGet:
              path: {{ .Values.livenessProbePath }}
