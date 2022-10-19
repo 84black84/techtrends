@@ -104,10 +104,9 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    # Stream logs to a file and to the console at the same time and set the default log level to DEBUG
-    root_logger = logging.getLogger()
-    logging.basicConfig(filename='app.log',level=logging.DEBUG)
+    logging.basicConfig(
+        format='%(asctime)s %(levelname)-8s %(message)s',
+        level=logging.DEBUG,
+        datefmt='%Y-%m-%d %H:%M:%S')
     
-    console_handler = logging.StreamHandler()
-    root_logger.addHandler(console_handler)
     app.run(host='0.0.0.0', port='3111')
