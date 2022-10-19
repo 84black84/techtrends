@@ -9,6 +9,10 @@ from werkzeug.exceptions import abort
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    
+    # update DB connection counter every time we communicate with the DB
+    connection.execute('UPDATE dbConnections SET db_connection_count = db_connection_count + 1 WHERE id = 1')
+    connection.commit()
     return connection
 
 # Function to get a post using its ID
@@ -83,11 +87,13 @@ def status():
 def metrics():
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
+    db_connection = connection.execute('SELECT db_connection_count FROM dbConnections WHERE id = 1').fetchone()
+    db_connection_count = db_connection['db_connection_count']
     connection.close()
     response = app.response_class(
         response = json.dumps(
             {
-                "db_connection_count":1,
+                "db_connection_count":db_connection_count,
                 "post_count": len(posts)
             }),
         status=200,
